@@ -1,4 +1,4 @@
-# Пять дней 5 проектов
+# 5 дней 5 проектов
 
 ## Первый день drag and drop 
 Реализовал небольшой drag and drop с помощью dragstart dragover dragenter dragleave и drop
