@@ -1,97 +1,34 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
-
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  background-color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100vh;
+  overflow: hidden;
+  margin: 0;
 }
 
 .container {
-  position: relative;
-  overflow: hidden;
-  width: 100vw;
-  height: 100vh;
-}
-
-.sidebar {
-  height: 100%;
-  width: 35%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: transform 0.5s ease-in-out;
-}
-
-.sidebar > div {
-  height: 100%;
-  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  color: #fff;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 400px;
 }
 
-.sidebar h1 {
-  font-size: 40px;
-  margin-bottom: 10px;
-  margin-top: -30px;
+.square {
+  width: 16px;
+  height: 16px;
+  background-color: #1d1d1d;
+  margin: 2px;
+  box-shadow: 0 0 2px black;
+  transition: 1.7s ease;
 }
 
-.main-slide {
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 35%;
-  width: 65%;
-  transition: transform 0.5s ease-in-out;
-}
-
-.main-slide > div {
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  height: 100%;
-  width: 100%;
-}
-
-button {
-  background-color: #fff;
-  border: none;
-  color: #aaa;
-  cursor: pointer;
-  font-size: 16px;
-  padding: 15px;
-}
-
-button:hover {
-  color: #222;
-}
-
-button:focus {
-  outline: none;
-}
-
-.container .controls button {
-  position: absolute;
-  left: 35%;
-  top: 50%;
-  z-index: 100;
-}
-
-.container .controls .down-button {
-  transform: translateX(-100%);
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
-
-.container .controls .up-button {
-  transform: translateY(-100%);
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+.square:hover {
+  transition-duration: 0s;
 }

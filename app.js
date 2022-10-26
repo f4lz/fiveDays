@@ -1,55 +1,38 @@
 window.addEventListener('load', () => {
 
-  const upBtn = document.querySelector('.up-button'),
-        downBtn = document.querySelector('.down-button'),
-        sidebar = document.querySelector('.sidebar'),
-        mainSlide = document.querySelector('.main-slide'),
-        container = document.querySelector('.container'),
-        slidesCount = mainSlide.querySelectorAll('div').length;
+  const board = document.querySelector('#board'),
+        colors = ['#e74c3c', '#8e44ad', 'magenta', '#e67e22', 'white', 'aqua', 'aquamarine'],
+        SQUARES_NUMBER = 500;
+  
+  for (let i = 0; i < SQUARES_NUMBER; i++) {
+    const square = document.createElement('div');
+    square.classList.add('square');
 
-  let activeSlideIndex = 0;
+    square.addEventListener('mouseover', () =>{
+      setColor(square);
+    });
 
-  sidebar.style.top = `-${(slidesCount - 1) * 100}vh`;
+    square.addEventListener('mouseleave', () =>{
+      removeColor(square);
+    });
 
-  setTimeout( window.addEventListener('keydown', (e) => {
-    if (e.code === 'ArrowDown') {
-      changeSlide('down');
-    }
-  }), 0);
- 
+    board.append(square);
+  }
 
-  setTimeout(window.addEventListener('keyup', e => {
-    if (e.code === 'ArrowUp') {
-      changeSlide('up');
-    }
-  }), 0); 
+  function setColor(element) {
+    const color = getRandomColor();
+    element.style.backgroundColor = color;
+    element.style.boxShadow = `0 0 2px ${color}, 0 0 10px ${color}`;
+  }
 
-  upBtn.addEventListener('click', () => {
-    changeSlide('up');
-  });
+  function removeColor(element) {
+    element.style.backgroundColor = '#1d1d1d';
+    element.style.boxShadow = ``;
+  }
 
-  downBtn.addEventListener('click', () => {
-    changeSlide('down');
-  });
-
-  function changeSlide(direction) {
-    if (direction === 'up') {
-      activeSlideIndex++;
-      if (activeSlideIndex === slidesCount) {
-        activeSlideIndex = 0;
-      }
-    } else if (direction === 'down') {
-      activeSlideIndex--;
-      if (activeSlideIndex < 0) {
-        activeSlideIndex = slidesCount - 1;
-      }
-    }
-
-    const height = container.clientHeight;
-
-    mainSlide.style.transform = `translateY(-${activeSlideIndex * height}px)`;
-
-    sidebar.style.transform = `translateY(${activeSlideIndex * height}px)`;
+  function getRandomColor() {
+    const index = Math.floor(Math.random() * colors.length);
+    return colors[index];
   }
 
 });
